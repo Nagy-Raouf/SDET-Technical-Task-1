@@ -10,7 +10,7 @@ module.exports = {
     const homePage = browser.page.homePage();
     const contactPage = browser.page.contactPage();
 
-    // === Step i: Open the page and verify it's loaded ===
+    // === Step 1: Open the page and verify it's loaded ===
     homePage.navigate();
 
     // Wait for a unique element that confirms home page loaded
@@ -23,7 +23,7 @@ module.exports = {
     // Assert that the URL contains the expected part for the home page.
     homePage.assert.urlContains(homePage.url, "User is at the home page.");
 
-    // === Step ii: Navigate to the Contact page and verify it's loaded ===
+    // === Step 2: Navigate to the Contact page and verify it's loaded ===
     // Click the link to the contact page.
     homePage.click("@contactLink");
 
@@ -31,13 +31,13 @@ module.exports = {
     contactPage.waitForElementVisible(
       "@contactPageIdentifier",
       5000,
-      '"The contact page loaded successfully."'
+      "The contact page loaded successfully."
     );
 
     // Assert that the URL contains the expected part for the contact page.
     browser.assert.urlContains("/contact.html", "User is at the contact page.");
 
-    // === Step iii: Click the browser's Back button and assert the user is at the home page ===
+    // === Step 3: Click the browser's Back button and assert the user is at the home page ===
     browser
       .back()
       // Wait for the home page to become visible again.
